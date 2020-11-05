@@ -34,3 +34,5 @@ build/
 
 *.log
 **/wrapper/*
+/.mvn/wrapper/
+mvnw*
