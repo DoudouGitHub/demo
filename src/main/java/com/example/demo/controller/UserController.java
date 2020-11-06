@@ -14,4 +14,11 @@ public class UserController {
 
         return "diaoyong";
     }
+
+    @GetMapping("/test2")
+    public String test2() {
+
+
+        return "diaoyong2";
+    }
 }
