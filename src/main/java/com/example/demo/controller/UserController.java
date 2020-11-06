@@ -12,7 +12,7 @@ public class UserController {
     public String getUser() {
 
 
-        return "diaoyong";
+        return "调用";
     }
 
     @GetMapping("/test2")
