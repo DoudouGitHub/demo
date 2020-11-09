@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- Defined Which jdbc driver should load -->
+    <!--  <classPathEntry location="WebContent/WEB-INF/lib/ojdbc6-11.2.0.1.0.jar" /> -->
+
+    <context id="infoGuardian" defaultModelType="flat" targetRuntime="MyBatis3">
+        <property name="javaFileEncoding" value="UTF-8" />
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://39.97.64.54:3306/mall?characterEncoding=utf-8"
+                        userId="root" password="root" />
+
+        <!-- 只有一个属于forceBigDecimals，默认false。 如果字段精确超过0，生成BigDecimal 如果字段精确是0，总长度10-18生成Long;如果字段精确是0， 总长5-9生成Integer; 如果字段精确是0，总长小于5生成Short; 如果forceBigDecimals为true,统一生成BigDecimal -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!-- 生成vo、model -->
+        <javaModelGenerator targetPackage="com.example.demo.domain" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- 生成mapxml文件 -->
+        <sqlMapGenerator targetPackage="com.example.demo.mapper.sqlmap" targetProject="src/main/java" />
+
+        <!-- 生成mapxml对应client，也就是接口dao -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+
+        <!--支付分账信息-->
+        <table tableName="oms_order" domainObjectName="OmsOrder"
+               enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
